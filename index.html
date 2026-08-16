@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- 网页标题与描述的中英文版本在 js/main.js 的 LANG_TEXT 里同步维护 -->
+  <title>Zhenchang Min · Personal Website</title>
+  <meta name="description" content="Zhenchang Min's personal website — projects, hobbies and contact. Student at Nanjing University." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👤</text></svg>" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script>
+    // 页面渲染前应用主题（避免闪白）：优先用上次的选择，默认夜间模式
+    (function () {
+      var saved = null;
+      try { saved = localStorage.getItem('site-theme'); } catch (e) {}
+      document.documentElement.dataset.theme =
+        saved === 'dark' || saved === 'light' ? saved : 'dark';
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- ======================== 顶部导航 ======================== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#home" class="logo" data-en="Zhenchang Min" data-zh="闵振昌">Zhenchang Min</a>
+
+      <nav class="site-nav" aria-label="主导航 / Main navigation">
+        <a href="#home" class="nav-link active" data-en="Home" data-zh="首页">Home</a>
+        <a href="#projects" class="nav-link" data-en="Projects" data-zh="项目">Projects</a>
+        <a href="#hobbies" class="nav-link" data-en="My Hobbies" data-zh="我的爱好">My Hobbies</a>
+        <a href="#contact" class="nav-link" data-en="Contact" data-zh="联系方式">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <button id="lang-toggle" class="icon-btn lang-btn" type="button" aria-label="切换语言 / Switch language">中文</button>
+        <button id="theme-toggle" class="icon-btn" type="button" aria-label="Toggle dark / light mode" title="Toggle dark / light mode">🌙</button>
+        <button id="nav-toggle" class="icon-btn nav-toggle" type="button" aria-label="打开菜单 / Open menu" aria-expanded="false">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ======================== 首屏 ======================== -->
+    <section id="home" class="hero">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <p class="hero-hello" data-en="Hello, I'm" data-zh="你好，我是">Hello, I'm</p>
+          <h1 class="hero-name" data-en="Zhenchang Min" data-zh="闵振昌">Zhenchang Min</h1>
+          <p class="hero-title" data-en="Student at Nanjing University" data-zh="南京大学 本科生">Student at Nanjing University</p>
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary" data-en="See My Projects" data-zh="看看我的项目">See My Projects</a>
+            <a href="#contact" class="btn btn-ghost" data-en="Contact Me" data-zh="联系我">Contact Me</a>
+          </div>
+        </div>
+
+        <div class="hero-avatar">
+          <!-- 头像来自 GitHub（assets/avatar.jpg）；以后换了 GitHub 头像想同步，
+               重新下载一次覆盖这个文件即可 -->
+          <img src="assets/avatar.jpg" alt="Zhenchang Min's avatar" class="avatar-img" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== 项目 ======================== -->
+    <section id="projects" class="section">
+      <div class="container">
+        <h2 class="section-title" data-en="My Projects" data-zh="我的项目">My Projects</h2>
+
+        <div class="project-grid">
+          <!-- ✏️ 复制整段 <article> 添加更多项目；文案要同时改 data-en 和 data-zh -->
+          <article class="card project-card reveal">
+            <h3 class="project-name">Git-Guild</h3>
+            <p class="project-desc" data-en="A gamified platform connecting open-source maintainers with developers through bounty-style tasks, smart matching, and an RPG-inspired growth system."
+               data-zh="把开源协作做成游戏：以悬赏任务、智能匹配和 RPG 式成长系统连接开源维护者与开发者。">
+              A gamified platform connecting open-source maintainers with developers through bounty-style tasks, smart matching, and an RPG-inspired growth system.
+            </p>
+            <ul class="tag-list">
+              <li class="tag">Java</li>
+              <li class="tag">Full-stack</li>
+              <li class="tag">Gamification</li>
+            </ul>
+            <div class="project-links">
+              <a href="https://github.com/ZhenchangMin/Git-Guild" target="_blank" rel="noopener noreferrer" class="link" data-en="GitHub Repo" data-zh="GitHub 仓库">GitHub Repo</a>
+            </div>
+          </article>
+
+          <article class="card project-card reveal">
+            <h3 class="project-name" data-en="Cross-Cultural Poetry Rewriting Model" data-zh="跨文化诗歌改写模型">Cross-Cultural Poetry Rewriting Model</h3>
+            <p class="project-desc" data-en="Cross-cultural style control in generative AI — rewriting poetry across cultures, with an interactive web demo."
+               data-zh="生成式 AI 的跨文化风格控制：让诗歌在不同文化风格之间改写，并搭建了在线交互演示网站。">
+              Cross-cultural style control in generative AI — rewriting poetry across cultures, with an interactive web demo.
+            </p>
+            <ul class="tag-list">
+              <li class="tag">Vue</li>
+              <li class="tag">Generative AI</li>
+              <li class="tag">NLP</li>
+            </ul>
+            <div class="project-links">
+              <a href="https://github.com/ZhenchangMin/Cross-Cultural-Poetry-Rewriting-Model" target="_blank" rel="noopener noreferrer" class="link" data-en="GitHub Repo" data-zh="GitHub 仓库">GitHub Repo</a>
+            </div>
+          </article>
+
+          <article class="card project-card reveal">
+            <h3 class="project-name">ai-translator</h3>
+            <p class="project-desc" data-en="A Windows desktop select-to-translate AI tool with customizable anime desktop pets."
+               data-zh="Windows 桌面划词 AI 翻译工具，支持自定义动漫桌宠。">
+              A Windows desktop select-to-translate AI tool with customizable anime desktop pets.
+            </p>
+            <ul class="tag-list">
+              <li class="tag">C#</li>
+              <li class="tag">WPF</li>
+              <li class="tag">DeepSeek</li>
+            </ul>
+            <div class="project-links">
+              <a href="https://github.com/ZhenchangMin/ai-translator" target="_blank" rel="noopener noreferrer" class="link" data-en="GitHub Repo" data-zh="GitHub 仓库">GitHub Repo</a>
+              <a href="https://github.com/ZhenchangMin/ai-translator/releases" target="_blank" rel="noopener noreferrer" class="link" data-en="Download" data-zh="下载">Download</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== 我的爱好 ======================== -->
+    <section id="hobbies" class="section section-alt">
+      <div class="container">
+        <h2 class="section-title" data-en="My Hobbies" data-zh="我的爱好">My Hobbies</h2>
+
+        <div class="hobby-grid">
+          <!-- ✏️ TODO: 描述文字可以改成自己的话；想换跳转链接改 href 即可。
+               文案修改时 data-en（英文）和 data-zh（中文）要同时改 -->
+          <a class="card hobby-card hobby-football reveal"
+             href="https://www.tottenhamhotspur.com/" target="_blank" rel="noopener noreferrer">
+            <span class="card-watermark" aria-hidden="true">⚽</span>
+            <div class="card-icon">⚽</div>
+            <h3 data-en="Football" data-zh="足球">Football</h3>
+            <p data-en="Tottenham Hotspur fan — Come On You Spurs!"
+               data-zh="托特纳姆热刺球迷，Come On You Spurs！">
+              Tottenham Hotspur fan — Come On You Spurs!
+            </p>
+            <span class="card-link-hint" data-en="Spurs Official Site ↗" data-zh="热刺官网 ↗">Spurs Official Site ↗</span>
+          </a>
+          <a class="card hobby-card hobby-kpop reveal"
+             href="https://twice.jype.com/" target="_blank" rel="noopener noreferrer">
+            <span class="card-watermark" aria-hidden="true">🎤</span>
+            <div class="card-icon">🎤</div>
+            <h3 data-en="K-POP" data-zh="K-POP">K-POP</h3>
+            <p data-en="TWICE is my favorite group — their upbeat stages always cheer me up."
+               data-zh="本命女团 TWICE，永远会被元气满满的舞台治愈。">
+              TWICE is my favorite group — their upbeat stages always cheer me up.
+            </p>
+            <span class="card-link-hint" data-en="TWICE Official Site ↗" data-zh="TWICE 官网 ↗">TWICE Official Site ↗</span>
+          </a>
+          <a class="card hobby-card hobby-anime reveal"
+             href="https://space.bilibili.com/474264959" target="_blank" rel="noopener noreferrer">
+            <span class="card-watermark" aria-hidden="true">📺</span>
+            <div class="card-icon card-icon-bilibili">
+              <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="currentColor" d="M17.813 4.653h.854c1.51.054 2.769.578 3.773 1.574 1.004.995 1.524 2.249 1.56 3.76v7.36c-.036 1.51-.556 2.769-1.56 3.773s-2.262 1.524-3.773 1.56H5.333c-1.51-.036-2.769-.556-3.773-1.56S.036 18.858 0 17.347v-7.36c.036-1.511.556-2.765 1.56-3.76 1.004-.996 2.262-1.52 3.773-1.574h.774l-1.174-1.12a1.234 1.234 0 0 1-.373-.906c0-.356.124-.658.373-.907l.027-.027c.267-.249.573-.373.92-.373.347 0 .653.124.92.373L9.653 4.44c.071.071.134.142.187.213h4.267a.836.836 0 0 1 .16-.213l2.853-2.747c.267-.249.573-.373.92-.373.347 0 .662.151.929.4.267.249.391.551.391.907 0 .355-.124.657-.373.906zM5.333 7.24c-.746.018-1.373.276-1.88.773-.506.498-.769 1.13-.786 1.894v7.52c.017.764.28 1.395.786 1.893.507.498 1.134.756 1.88.773h13.334c.746-.017 1.373-.275 1.88-.773.506-.498.769-1.129.786-1.893v-7.52c-.017-.765-.28-1.396-.786-1.894-.507-.497-1.134-.755-1.88-.773zM8 11.107c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c0-.373.129-.689.386-.947.258-.257.574-.386.947-.386zm8 0c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c.017-.391.15-.711.4-.96.249-.249.56-.373.933-.373Z"/>
+              </svg>
+            </div>
+            <h3 data-en="Anime" data-zh="动漫">Anime</h3>
+            <p data-en="A constant anime watcher — catching up on shows on Bilibili. Feel free to visit my space!"
+               data-zh="番剧常驻观众，追番、补番都在 B 站，欢迎来我的空间逛逛。">
+              A constant anime watcher — catching up on shows on Bilibili. Feel free to visit my space!
+            </p>
+            <span class="card-link-hint" data-en="My Bilibili Space ↗" data-zh="我的 B 站空间 ↗">My Bilibili Space ↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== 联系方式 ======================== -->
+    <section id="contact" class="section">
+      <div class="container">
+        <h2 class="section-title" data-en="Contact Me" data-zh="联系我">Contact Me</h2>
+
+        <div class="contact-list">
+          <a href="mailto:mmm493027@gmail.com" class="card contact-item reveal">
+            <span class="card-icon card-icon-email">
+              <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="4" width="20" height="16" rx="2" />
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+              </svg>
+            </span>
+            <span>
+              <strong data-en="Email" data-zh="邮箱">Email</strong>
+              <span class="contact-value">mmm493027@gmail.com</span>
+            </span>
+          </a>
+
+          <a href="https://github.com/ZhenchangMin" target="_blank" rel="noopener noreferrer" class="card contact-item reveal">
+            <span class="card-icon card-icon-github">
+              <svg class="icon-svg" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">
+                <path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+              </svg>
+            </span>
+            <span>
+              <strong>GitHub</strong>
+              <span class="contact-value">github.com/ZhenchangMin</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======================== 页脚 ======================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>
+        © <span id="year">2026</span>
+        <span data-en="Zhenchang Min" data-zh="闵振昌">Zhenchang Min</span>
+        <span data-en="· Hosted on GitHub Pages" data-zh="· 由 GitHub Pages 托管">· Hosted on GitHub Pages</span>
+      </p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

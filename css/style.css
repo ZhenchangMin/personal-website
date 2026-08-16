@@ -1,0 +1,709 @@
+/* ==========================================================================
+   个人主页样式表
+   想整体换配色：只改下面两组 CSS 变量（浅色 / 深色）即可，无需动其他代码
+   ========================================================================== */
+
+/* ---------- 主题变量：浅色 ---------- */
+:root {
+  --bg: #fafafa;
+  --bg-alt: #f1f2f7;
+  --surface: #ffffff;
+  --text: #232838;
+  --text-muted: #5c6675;
+  --border: #e4e7ee;
+  --accent: #6366f1;
+  --accent-strong: #4f46e5;
+  --accent-contrast: #ffffff;
+  --accent-soft: rgba(99, 102, 241, 0.12);
+  --shadow: 0 6px 20px rgba(35, 40, 56, 0.07);
+  --shadow-hover: 0 14px 32px rgba(35, 40, 56, 0.13);
+  --header-bg: rgba(250, 250, 250, 0.85);
+  --radius: 16px;
+}
+
+/* ---------- 主题变量：深色 ---------- */
+:root[data-theme="dark"] {
+  --bg: #0f131b;
+  --bg-alt: #141a25;
+  --surface: #1a2130;
+  --text: #e7eaf2;
+  --text-muted: #98a2b3;
+  --border: #2a3245;
+  --accent: #818cf8;
+  --accent-strong: #a5b0fc;
+  --accent-contrast: #10131c;
+  --accent-soft: rgba(129, 140, 248, 0.16);
+  --shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  --shadow-hover: 0 14px 32px rgba(0, 0, 0, 0.45);
+  --header-bg: rgba(15, 19, 27, 0.85);
+}
+
+/* ---------- 基础 ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: var(--accent-strong);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.container {
+  width: min(1100px, 92%);
+  margin-inline: auto;
+}
+
+/* ---------- 顶部导航 ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--header-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  height: 64px;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--text);
+}
+
+.logo:hover {
+  text-decoration: none;
+  color: var(--accent-strong);
+}
+
+.site-nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-link {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.nav-link:hover {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.nav-link.active {
+  color: var(--accent-strong);
+  font-weight: 600;
+}
+
+.header-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  font-size: 1.1rem;
+  line-height: 1;
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.icon-btn:hover {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+
+.nav-toggle {
+  display: none;
+}
+
+/* 语言切换按钮：宽度自适应文字 */
+.lang-btn {
+  width: auto;
+  padding: 0 0.8rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* ---------- 首屏（Hero） ---------- */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 5.5rem 0 5rem;
+  scroll-margin-top: 64px;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(520px 320px at 85% 10%, var(--accent-soft), transparent 70%),
+    radial-gradient(420px 280px at 8% 90%, var(--accent-soft), transparent 70%);
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  align-items: center;
+  gap: 3rem;
+}
+
+.hero-hello {
+  margin: 0 0 0.25rem;
+  color: var(--accent-strong);
+  font-weight: 600;
+}
+
+.hero-name {
+  margin: 0 0 0.5rem;
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  line-height: 1.2;
+}
+
+.hero-title {
+  margin: 0;
+  font-size: 1.2rem;
+  color: var(--text-muted);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-top: 2rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 1.6rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.2s ease,
+    background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn:hover {
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--accent-contrast);
+  box-shadow: 0 6px 16px var(--accent-soft);
+}
+
+.btn-primary:hover {
+  background: var(--accent-strong);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--border);
+}
+
+.btn-ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent-strong);
+}
+
+.hero-avatar {
+  display: flex;
+  justify-content: center;
+}
+
+/* 没放头像照片时显示的占位圆 */
+.avatar-placeholder {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 5rem;
+  background: linear-gradient(135deg, var(--accent-soft), var(--bg-alt));
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+/* 放了头像照片后（index.html 里换成 <img>）生效 */
+.avatar-img {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: var(--shadow);
+}
+
+/* ---------- 分区通用 ---------- */
+.section {
+  padding: 4.5rem 0;
+  scroll-margin-top: 64px;
+}
+
+.section-alt {
+  background: var(--bg-alt);
+}
+
+.section-title {
+  margin: 0 0 2.2rem;
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+.section-title::after {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 4px;
+  margin: 0.8rem auto 0;
+  border-radius: 999px;
+  background: var(--accent);
+}
+
+/* ---------- 卡片通用 ---------- */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.6rem;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  font-size: 1.6rem;
+  background: var(--accent-soft);
+  border-radius: 14px;
+}
+
+/* GitHub 章鱼猫 SVG 图标（深色渐变底 + 白色图标） */
+.card-icon-github {
+  background: linear-gradient(135deg, #24292f, #57606a);
+  color: #fff;
+}
+
+/* 邮箱信封 SVG 图标（主题蓝渐变底 + 白色图标） */
+.card-icon-email {
+  background: linear-gradient(135deg, #6366f1, #4338ca);
+  color: #fff;
+}
+
+/* B 站小电视 SVG 图标（白，坐在卡片的粉蓝渐变底上） */
+.card-icon-bilibili {
+  color: #fff;
+}
+
+.icon-svg {
+  width: 26px;
+  height: 26px;
+  display: block;
+}
+
+/* 爱好卡片里的 SVG 图标稍大一点 */
+.hobby-card .icon-svg {
+  width: 30px;
+  height: 30px;
+}
+
+/* ---------- 爱好卡片（整卡可点击跳转，每张有专属配色、渐变图标和大号水印） ---------- */
+.hobby-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.3rem;
+}
+
+.hobby-card {
+  --hobby-accent: var(--accent);
+  --hobby-soft: var(--accent-soft);
+  --hobby-grad: linear-gradient(135deg, var(--accent), var(--accent-strong));
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 1.8rem 1.6rem;
+  color: var(--text);
+}
+
+/* 右上角的大号 emoji 水印（HTML 里带 aria-hidden 的 .card-watermark） */
+.card-watermark {
+  position: absolute;
+  top: -1.4rem;
+  right: -0.8rem;
+  font-size: 6.5rem;
+  line-height: 1;
+  opacity: 0.1;
+  transform: rotate(12deg);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  pointer-events: none;
+}
+
+/* 顶部的主题色条 */
+.hobby-card::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 4px;
+  background: var(--hobby-grad);
+}
+
+.hobby-card:hover {
+  text-decoration: none;
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--hobby-accent);
+}
+
+.hobby-card:hover .card-watermark {
+  transform: rotate(8deg) scale(1.15);
+  opacity: 0.16;
+}
+
+.hobby-card .card-icon {
+  width: 58px;
+  height: 58px;
+  font-size: 1.9rem;
+  border-radius: 50%;
+  background: var(--hobby-grad);
+  box-shadow: 0 6px 14px var(--hobby-soft);
+}
+
+.hobby-card h3 {
+  margin: 1rem 0 0.4rem;
+  font-size: 1.2rem;
+}
+
+.hobby-card p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  flex: 1;
+}
+
+/* 跳转提示做成主题色胶囊 */
+.card-link-hint {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 1.2rem;
+  padding: 0.32rem 0.9rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 999px;
+  color: var(--hobby-accent);
+  background: var(--hobby-soft);
+  transition: transform 0.2s ease;
+}
+
+.hobby-card:hover .card-link-hint {
+  transform: translateX(3px);
+}
+
+/* 足球：热刺的海军蓝 */
+.hobby-football {
+  --hobby-accent: #3b5bbf;
+  --hobby-soft: rgba(59, 91, 191, 0.14);
+  --hobby-grad: linear-gradient(135deg, #16295e, #4f74e8);
+  background:
+    linear-gradient(150deg, rgba(21, 38, 93, 0.16), rgba(79, 116, 232, 0.07) 45%, transparent 75%),
+    var(--surface);
+}
+.hobby-football .card-icon {
+  /* 浅一点的蓝，让 ⚽ 的黑白球身看得清楚 */
+  background: linear-gradient(135deg, #6f8cee, #aac1fb);
+}
+
+/* K-POP：TWICE 的霓虹品红 × 杏色 */
+.hobby-kpop {
+  --hobby-accent: #e63f9d;
+  --hobby-soft: rgba(230, 63, 157, 0.13);
+  --hobby-grad: linear-gradient(135deg, #ff248c, #fc9d9a);
+  background:
+    linear-gradient(150deg, rgba(255, 36, 140, 0.14), rgba(252, 157, 154, 0.18) 55%, transparent 85%),
+    var(--surface);
+}
+.hobby-kpop .card-icon {
+  background: linear-gradient(135deg, #ff248c, #ff7bb0);
+}
+
+/* 动漫：B 站的粉 × 蓝 */
+.hobby-anime {
+  --hobby-accent: #f0568c;
+  --hobby-soft: rgba(240, 86, 140, 0.14);
+  --hobby-grad: linear-gradient(135deg, #fb7299, #23ade5);
+  background:
+    linear-gradient(150deg, rgba(251, 114, 153, 0.18), rgba(0, 174, 236, 0.12) 60%, transparent 90%),
+    var(--surface);
+}
+.hobby-anime .card-icon {
+  background: linear-gradient(135deg, #fb7299, #5cc2f0);
+}
+
+/* 深色主题下把专属色提亮，保证可读性 */
+:root[data-theme="dark"] .hobby-football {
+  --hobby-accent: #9db4e8;
+}
+:root[data-theme="dark"] .hobby-kpop {
+  --hobby-accent: #ff8ac2;
+}
+:root[data-theme="dark"] .hobby-anime {
+  --hobby-accent: #ff9dbd;
+}
+:root[data-theme="dark"] .card-watermark {
+  opacity: 0.14;
+}
+
+/* ---------- 项目卡片 ---------- */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 1.3rem;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--accent);
+}
+
+.project-name {
+  margin: 0 0 0.6rem;
+  font-size: 1.15rem;
+}
+
+.project-desc {
+  margin: 0 0 1.1rem;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  flex: 1;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0 0 1.2rem;
+  padding: 0;
+  list-style: none;
+}
+
+.tag {
+  padding: 0.18rem 0.75rem;
+  font-size: 0.8rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+}
+
+.project-links {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.link {
+  font-weight: 600;
+}
+
+/* ---------- 联系方式 ---------- */
+.contact-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.1rem;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.contact-item:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--accent);
+  text-decoration: none;
+}
+
+.contact-item strong {
+  display: block;
+}
+
+.contact-value {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  word-break: break-all;
+}
+
+/* ---------- 页脚 ---------- */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 2rem 0;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* ---------- 滚动显现动画 ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- 响应式 ---------- */
+@media (max-width: 860px) {
+  .hero {
+    padding: 4rem 0 3.5rem;
+  }
+
+  .hero-inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero-avatar {
+    order: -1;
+  }
+
+  .avatar-placeholder,
+  .avatar-img {
+    width: 170px;
+    height: 170px;
+    font-size: 4rem;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 720px) {
+  .nav-toggle {
+    display: inline-flex;
+  }
+
+  /* 移动端：导航收进下拉面板 */
+  .site-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow);
+  }
+
+  .site-header.nav-open .site-nav {
+    display: flex;
+  }
+
+  .nav-link {
+    padding: 0.9rem 1.2rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .section {
+    padding: 3.2rem 0;
+  }
+}
+
+/* 尊重系统的减少动态效果设置 */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
