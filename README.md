@@ -27,7 +27,7 @@ python -m http.server 8000
 | 姓名、学校、介绍、研究、项目及链接 | `index.html` |
 | 宽度、字距、颜色、响应式布局 | `css/style.css` |
 | 语言切换及站点描述 | `js/main.js` |
-| 头像 | `assets/avatar.jpg` |
+| 主页照片（4:5 裁剪） | `assets/profile.jpg`（页面路径和尺寸在 `index.html`，显示大小在 `css/style.css`） |
 
 每段双语文案同时更新 `data-en` 和 `data-zh` 以及元素中的英文默认文本，确保不开启 JavaScript 时仍能阅读。
 
